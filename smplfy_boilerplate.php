@@ -3,13 +3,13 @@
  * Plugin Name: SMPLFY Boiler Plate
  * Version: 1.0.0
  * Description: Starter plugin with custom plugin framework to get started
- * Author: Thomas Picolo-Donnelly
+ * Author: Raphael Shawn Taurai
  * Author URI: https://simplifybiz.com/
  * Requires PHP: 7.4
  * Requires Plugins:  smplfy-core
  *
  * @package Bliksem
- * @author Thomas Picolo-Donnelly
+ * @author Raphael Shawn Taurai
  * @since 0.0.1
  */
 
