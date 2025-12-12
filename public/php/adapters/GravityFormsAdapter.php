@@ -3,13 +3,20 @@
  * Adapter for handling Gravity Forms events
  */
 
-namespace SMPLFY\boilerplate;
+namespace SMPLFY\ClientName;
 class GravityFormsAdapter {
+	private ContactFormSubmissionUsecase $contactSubmissionUsecase;
+	private EventRegistrationSubmissionUsecase $eventSubmissionUsecase;
+	private UpdatesFormSubmissionUsecase $updatesSubmissionUsecase;
 
-	private ExampleUsecase $exampleUsecase;
-
-	public function __construct( ExampleUsecase $exampleUsecase ) {
-		$this->exampleUsecase = $exampleUsecase;
+	public function __construct(
+		ContactFormSubmissionUsecase $contactSubmissionUsecase,
+		EventRegistrationSubmissionUsecase $eventSubmissionUsecase,
+		UpdatesFormSubmissionUsecase $updatesSubmissionUsecase
+	) {
+		$this->contactSubmissionUsecase = $contactSubmissionUsecase;
+		$this->eventSubmissionUsecase = $eventSubmissionUsecase;
+		$this->updatesSubmissionUsecase = $updatesSubmissionUsecase;
 
 		$this->register_hooks();
 		$this->register_filters();
@@ -21,7 +28,24 @@ class GravityFormsAdapter {
 	 * @return void
 	 */
 	public function register_hooks() {
-		add_action( 'gform_after_submission_9999', [ $this->exampleUsecase, 'example_function' ], 10, 4 );
+		add_action(
+			'gform_after_submission_' . FormIds::CONTACT_FORM_ID,
+			[$this->contactSubmissionUsecase, 'handle_submission'],
+			10,
+			2
+		);
+		add_action(
+			'gform_after_submission_' . FormIds::EVENT_REGISTRATION_ID,
+			[$this->eventSubmissionUsecase, 'handle_submission'],
+			10,
+			2
+		);
+		add_action(
+			'gform_after_submission_' . FormIds::STOCK_UPDATES_ID,
+			[$this->updatesSubmissionUsecase, 'handle_submission'],
+			10,
+			2
+		);
 	}
 
 	/**
@@ -30,6 +54,6 @@ class GravityFormsAdapter {
 	 * @return void
 	 */
 	public function register_filters() {
-
+		// Add custom filters here if needed
 	}
 }

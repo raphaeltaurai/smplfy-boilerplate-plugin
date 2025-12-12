@@ -8,7 +8,8 @@
  * @property $email
  */
 
-namespace SMPLFY\boilerplate;
+namespace SMPLFY\ClientName;
+use SMPLFY\ClientName\FormIds;
 
 use SmplfyCore\SMPLFY_BaseEntity;
 
@@ -17,11 +18,13 @@ use SmplfyCore\SMPLFY_BaseEntity;
  * @property $nameFirst
  * @property $nameLast
  * @property $email
+ * @property $phone
+ * @property $comment
  */
-class ExampleEntity extends SMPLFY_BaseEntity {
+class ContactFormEntity extends SMPLFY_BaseEntity {
 	public function __construct( $formEntry = array() ) {
 		parent::__construct( $formEntry );
-		$this->formId = FormIds::EXAMPLE_FORM_ID;
+		$this->formId = FormIds::CONTACT_FORM_ID;
 	}
 
 	protected function get_property_map(): array {
@@ -29,6 +32,8 @@ class ExampleEntity extends SMPLFY_BaseEntity {
 			'nameFirst' => '1.3',
 			'nameLast'  => '1.6',
 			'email'     => '2',
+            'phone'     => '4',
+            'comment'   => '3',
 		);
 	}
 }

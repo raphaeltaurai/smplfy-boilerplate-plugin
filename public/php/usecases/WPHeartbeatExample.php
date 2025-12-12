@@ -1,6 +1,6 @@
 <?php
 
-namespace SMPLFY\boilerplate;
+namespace SMPLFY\ClientName;
 
 
 class WPHeartbeatExample {
